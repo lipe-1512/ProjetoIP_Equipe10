@@ -5,10 +5,11 @@
 ### Funcionalidades
   - [X] Movimentação do player
   - [X] Colisão
-  - [ ] Objetos ao longo do labirinto
+  - [ ] Adicionar Objetos
   - [ ] Contador
   - [ ] Mudar de fase de acordo com a quantidade de objetos coletados
   - [ ] Design
+  - [ ] Mudar a forma como se muda de fase
   
   
 ### Contribuidores:
