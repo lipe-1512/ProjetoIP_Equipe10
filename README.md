@@ -7,11 +7,11 @@
   - [X] Colisão
   - [X] Adicionar Objetos
   - [ ] Contador
-  - [ ] Mudar de fase de acordo com a quantidade de objetos coletados
+  - [X] Mudar de fase de acordo com a quantidade de objetos coletados
   - [ ] Design
-  - [ ] Mudar a forma como se muda de fase
-  
-  
+  - [ ] ?
+
+    
 ### Contribuidores:
 
 <table>
