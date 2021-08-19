@@ -5,7 +5,7 @@
 ### Funcionalidades
   - [X] Movimentação do player
   - [X] Colisão
-  - [ ] Adicionar Objetos
+  - [X] Adicionar Objetos
   - [ ] Contador
   - [ ] Mudar de fase de acordo com a quantidade de objetos coletados
   - [ ] Design
