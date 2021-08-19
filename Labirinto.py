@@ -11,7 +11,12 @@ YELLOW = (255, 255, 0)
 #number of treasures
 N = 3
  
- 
+def on_grid_random():
+    x = random.randint(20, 760)
+    y = random.randint(20, 550)
+    return (x//15 * 15, y//15 *15)
+
+
 class Wall(pygame.sprite.Sprite):
     """This class represents the bar at the bottom that the player controls """
  
@@ -88,6 +93,7 @@ class Player(pygame.sprite.Sprite):
                 self.rect.bottom = block.rect.top
             else:
                 self.rect.top = block.rect.bottom
+
 swallows = pygame.sprite.Group()
 class Treasure(pygame.sprite.Sprite):
     """ This class represents the bar at the bottom that the
@@ -109,11 +115,13 @@ class Treasure(pygame.sprite.Sprite):
         self.rect.x = x
 
     
-    def position(self, walls):   
+    def position(self, walls):
+
         # Check and see if we hit anything
         block_hit_list = pygame.sprite.spritecollide(self, walls,False)
         for block in block_hit_list:
             self.rect.top = block.rect.bottom
+   
             
 class Room(object):
     """ Base class for all rooms. """
@@ -135,10 +143,8 @@ class Room1(Room):
         # Make the walls. (x_pos, y_pos, width, height)
  
         # This is a list of walls. Each is in the form [x, y, width, height]
-        walls = [[0, 0, 20, 250, WHITE],
-                 [0, 350, 20, 250, WHITE],
-                 [780, 0, 20, 250, WHITE],
-                 [780, 350, 20, 250, WHITE],
+        walls = [[0, 0, 20, 600, WHITE],
+                 [780, 0, 20, 600, WHITE],
                  [20, 0, 760, 20, WHITE],
                  [20, 580, 760, 20, WHITE],
                  [390, 50, 20, 500, BLUE]
@@ -155,14 +161,11 @@ class Room2(Room):
     def __init__(self):
         super().__init__()
  
-        walls = [[0, 0, 20, 250, RED],
-                 [0, 350, 20, 250, RED],
-                 [780, 0, 20, 250, RED],
-                 [780, 350, 20, 250, RED],
+        walls = [[0, 0, 20, 600, RED],
+                 [780, 0, 20, 600, RED],
                  [20, 0, 760, 20, RED],
-                 [20, 580, 760, 20, RED],
-                 [190, 50, 20, 500, GREEN],
-                 [590, 50, 20, 500, GREEN]
+                 [20, 580, 760, 20, RED]
+
                 ]
  
         for item in walls:
@@ -175,10 +178,8 @@ class Room3(Room):
     def __init__(self):
         super().__init__()
  
-        walls = [[0, 0, 20, 250, PURPLE],
-                 [0, 350, 20, 250, PURPLE],
-                 [780, 0, 20, 250, PURPLE],
-                 [780, 350, 20, 250, PURPLE],
+        walls = [[0, 0, 20, 600, PURPLE],
+                 [780, 0, 20, 600, PURPLE],
                  [20, 0, 760, 20, PURPLE],
                  [20, 580, 760, 20, PURPLE]
                 ]
@@ -186,7 +187,7 @@ class Room3(Room):
         for item in walls:
             wall = Wall(item[0], item[1], item[2], item[3], item[4])
             self.wall_list.add(wall)
- 
+        '''   
         for x in range(100, 800, 100):
             for y in range(50, 451, 300):
                 wall = Wall(x, y, 20, 200, RED)
@@ -195,7 +196,7 @@ class Room3(Room):
         for x in range(150, 700, 100):
             wall = Wall(x, 200, 20, 200, WHITE)
             self.wall_list.add(wall)
- 
+        '''
  
 def main():
     """ Main Program """
@@ -210,14 +211,14 @@ def main():
     pygame.display.set_caption('Labirinto')
  
     # Create the player paddle object
-    player = Player(50, 50)
+    player = Player(45, 45)
     movingsprites = pygame.sprite.Group()
     movingsprites.add(player)
      
     group_treasure = pygame.sprite.Group()
 
     for item in range(N):
-        treasure = Treasure(random.randint(20, 760), random.randint(20, 550))
+        treasure = Treasure(on_grid_random()[0],on_grid_random()[1])
         group_treasure.add(treasure)
         movingsprites.add(treasure)
  
@@ -238,7 +239,7 @@ def main():
     clock = pygame.time.Clock()
  
     done = False
- 
+    count = 0
     while not done:
 
         swallow = Treasure(x=800, y=random.randrange(800))
@@ -271,58 +272,27 @@ def main():
                     player.changespeed(0, -5)
  
         # --- Game Logic ---
- 
         player.move(current_room.wall_list)
-     
+      
         for treasure in group_treasure:
             treasure.position(current_room.wall_list)
-                
- 
-        if player.rect.x < -15:
-            
-            for treasure in group_treasure:
-                treasure.rect.x = random.randint(20,760)
-                treasure.rect.y = random.randint(20,550)
-            
-            if current_room_no == 0:
-                current_room_no = 2
-                current_room = rooms[current_room_no]
-                player.rect.x = 790
-               
-              
-            elif current_room_no == 2:
-                current_room_no = 1
-                current_room = rooms[current_room_no]
-                player.rect.x = 790
-               
-            else:
-                current_room_no = 0
-                current_room = rooms[current_room_no]
-                player.rect.x = 790
-              
- 
-        if player.rect.x > 801:
-            #change the position of the treasures
-            for treasure in group_treasure:
-                treasure.rect.x = random.randint(20,760)
-                treasure.rect.y = random.randint(20,550)
-
-            if current_room_no == 0:
-                current_room_no = 1
-                current_room = rooms[current_room_no]
-                player.rect.x = 0
            
-            elif current_room_no == 1:
-                current_room_no = 2
-                current_room = rooms[current_room_no]
-                player.rect.x = 0
-            
-            else:
-                current_room_no = 0
-                current_room = rooms[current_room_no]
-                player.rect.x = 0
-            
-
+            if treasure.rect.x == player.rect.x and treasure.rect.y == player.rect.y:
+                treasure.rect.x = 700
+                treasure.rect.y = 700
+                #how many treasures were catch
+                count +=1
+                
+                if count == N:
+                    current_room_no +=1
+                    current_room = rooms[current_room_no]
+                    player.rect.x = 400
+                    player.rect.y = 300
+                    count=0
+                    for treasure in group_treasure:
+                        treasure.rect.x = on_grid_random()[0]
+                        treasure.rect.y = on_grid_random()[1]
+                
         # --- Drawing ---
         screen.fill(BLACK)
  
