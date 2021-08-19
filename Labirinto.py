@@ -8,6 +8,8 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 PURPLE = (255, 0, 255)
 YELLOW = (255, 255, 0)
+#number of treasures
+N = 3
  
  
 class Wall(pygame.sprite.Sprite):
@@ -93,10 +95,10 @@ class Treasure(pygame.sprite.Sprite):
  
     def __init__(self, x, y):
         """ Constructor function """
- 
         # Call the parent's constructor
         super().__init__()
- 
+        #self.treasure_list = pygame.sprite.Group()
+
         # Set height, width
         self.image = pygame.Surface([15, 15])
         self.image.fill(YELLOW)
@@ -113,10 +115,6 @@ class Treasure(pygame.sprite.Sprite):
         for block in block_hit_list:
             self.rect.top = block.rect.bottom
             
-
-        
- 
- 
 class Room(object):
     """ Base class for all rooms. """
  
@@ -215,11 +213,14 @@ def main():
     player = Player(50, 50)
     movingsprites = pygame.sprite.Group()
     movingsprites.add(player)
+     
+    group_treasure = pygame.sprite.Group()
+
+    for item in range(N):
+        treasure = Treasure(random.randint(20, 760), random.randint(20, 550))
+        group_treasure.add(treasure)
+        movingsprites.add(treasure)
  
-    
-    treasure = Treasure(random.randint(20, 760), random.randint(20, 550))
-    movingsprites.add(treasure)
-        
     rooms = []
  
     room = Room1()
@@ -272,55 +273,56 @@ def main():
         # --- Game Logic ---
  
         player.move(current_room.wall_list)
-        treasure.position(current_room.wall_list)
+     
+        for treasure in group_treasure:
+            treasure.position(current_room.wall_list)
+                
  
         if player.rect.x < -15:
+            
+            for treasure in group_treasure:
+                treasure.rect.x = random.randint(20,760)
+                treasure.rect.y = random.randint(20,550)
+            
             if current_room_no == 0:
                 current_room_no = 2
                 current_room = rooms[current_room_no]
                 player.rect.x = 790
-                
-                treasure.rect.x = random.randint(20,760)
-                treasure.rect.y = random.randint(20,550)
-                
+               
+              
             elif current_room_no == 2:
                 current_room_no = 1
                 current_room = rooms[current_room_no]
                 player.rect.x = 790
-                treasure.rect.x = random.randint(20,760)
-                treasure.rect.y = random.randint(20,550)
-                
+               
             else:
                 current_room_no = 0
                 current_room = rooms[current_room_no]
                 player.rect.x = 790
-                treasure.rect.x = random.randint(20,760)
-                treasure.rect.y = random.randint(20,550)
-                
+              
  
         if player.rect.x > 801:
+            #change the position of the treasures
+            for treasure in group_treasure:
+                treasure.rect.x = random.randint(20,760)
+                treasure.rect.y = random.randint(20,550)
+
             if current_room_no == 0:
                 current_room_no = 1
                 current_room = rooms[current_room_no]
                 player.rect.x = 0
-                treasure.rect.x = random.randint(20,760)
-                treasure.rect.y = random.randint(20,550)
-                
+           
             elif current_room_no == 1:
                 current_room_no = 2
                 current_room = rooms[current_room_no]
                 player.rect.x = 0
-                treasure.rect.x = random.randint(20,760)
-                treasure.rect.y = random.randint(20,550)
-                
+            
             else:
                 current_room_no = 0
                 current_room = rooms[current_room_no]
                 player.rect.x = 0
-                treasure.rect.x = random.randint(20,760)
-                treasure.rect.y = random.randint(20,550)
-                
- 
+            
+
         # --- Drawing ---
         screen.fill(BLACK)
  
