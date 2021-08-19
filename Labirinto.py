@@ -8,6 +8,8 @@ GREEN = (0, 255, 0)
 RED = (255, 0, 0)
 PURPLE = (255, 0, 255)
 YELLOW = (255, 255, 0)
+#number of treasures
+N = 3
  
  
 class Wall(pygame.sprite.Sprite):
@@ -113,10 +115,6 @@ class Treasure(pygame.sprite.Sprite):
         for block in block_hit_list:
             self.rect.top = block.rect.bottom
             
-
-        
- 
- 
 class Room(object):
     """ Base class for all rooms. """
  
@@ -215,22 +213,14 @@ def main():
     player = Player(50, 50)
     movingsprites = pygame.sprite.Group()
     movingsprites.add(player)
-    
+     
     group_treasure = pygame.sprite.Group()
 
-    for item in range(3):
+    for item in range(N):
         treasure = Treasure(random.randint(20, 760), random.randint(20, 550))
         group_treasure.add(treasure)
         movingsprites.add(treasure)
-    '''
-
-    treasure1 = Treasure(random.randint(20, 760), random.randint(20, 550))
-    movingsprites.add(treasure1)
-    treasure2 = Treasure(random.randint(20, 760), random.randint(20, 550))
-    movingsprites.add(treasure2)
-    treasure3 = Treasure(random.randint(20, 760), random.randint(20, 550))
-    movingsprites.add(treasure3)
-    '''
+ 
     rooms = []
  
     room = Room1()
