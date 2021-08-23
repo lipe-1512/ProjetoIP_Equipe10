@@ -195,6 +195,7 @@ def main():
                 if event.key == pygame.K_ESCAPE:
                     done = True
                    
+
             if event.type == pygame.KEYUP:
                 if event.key == pygame.K_LEFT:
                     player.changespeed(5, 0)
