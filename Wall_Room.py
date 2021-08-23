@@ -13,17 +13,17 @@ YELLOW = (255, 255, 0)
 
 class Wall(pygame.sprite.Sprite):
     """This class represents the bar at the bottom that the player controls """
-
+ 
     def __init__(self, x, y, width, height, color):
         """ Constructor function """
-
+ 
         # Call the parent's constructor
         super().__init__()
-
+ 
         # Make a BLUE wall, of the size specified in the parameters
         self.image = pygame.Surface([width, height])
         self.image.fill(color)
-
+ 
         # Make our top-left corner the passed-in location.
         self.rect = self.image.get_rect()
         self.rect.y = y
@@ -56,6 +56,7 @@ class Room1(Room):
                  [780, 0, 20, 600, WHITE],
                  [20, 0, 760, 20, WHITE],
                  [20, 580, 760, 20, WHITE],
+                 [390, 50, 20, 500, BLUE],
                  [330, 80, 20, 380, BLUE],
                  [130, 80, 20, 200, BLUE],
                  [150, 260, 180, 20, BLUE],
@@ -119,6 +120,7 @@ class Room3(Room):
                  [780, 0, 20, 600, PURPLE],
                  [20, 0, 760, 20, PURPLE],
                  [20, 580, 760, 20, PURPLE],
+                 [20, 580, 760, 20, PURPLE],
                  [330, 85, 20, 410, PURPLE],
                  [130, 85, 200, 20, PURPLE],
                  [130, 475, 200, 20, PURPLE],
@@ -144,7 +146,6 @@ class Room3(Room):
                  [720, 145, 60, 20, PURPLE],
                  [720, 405, 60, 20, PURPLE]
                  ]
-
         for item in walls:
             wall = Wall(item[0], item[1], item[2], item[3], item[4])
             self.wall_list.add(wall)
