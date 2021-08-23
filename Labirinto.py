@@ -113,8 +113,8 @@ YELLOW = (255, 255, 0)
 N = 3
  
 def on_grid_random():
-    x = random.randint(20, 740)
-    y = random.randint(20, 540)
+    x = random.randint(30, 740)
+    y = random.randint(30, 540)
     return (x//15 * 15, y//15 *15)
 
 
