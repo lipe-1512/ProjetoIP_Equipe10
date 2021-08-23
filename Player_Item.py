@@ -70,8 +70,12 @@ class Player(pygame.sprite.Sprite):
                 self.rect.top = block.rect.bottom
 
 
+swallows = pygame.sprite.Group()
+
+
 class Treasure(pygame.sprite.Sprite):
-    """ This class represents collectable items  """
+    """ This class represents the bar at the bottom that the
+    player controls """
 
     def __init__(self, x, y):
         """ Constructor function """
@@ -80,7 +84,7 @@ class Treasure(pygame.sprite.Sprite):
         # self.treasure_list = pygame.sprite.Group()
 
         # Set height, width
-        self.image = pygame.Surface([25, 25])
+        self.image = pygame.Surface([15, 15])
         self.image.fill(YELLOW)
 
         # Make our top-left corner the passed-in location.
