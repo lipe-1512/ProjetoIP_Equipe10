@@ -6,7 +6,7 @@
   - [X] Movimentação do player
   - [X] Colisão
   - [X] Adicionar Objetos
-  - [ ] Contador
+  - [X] Contador
   - [X] Mudar de fase de acordo com a quantidade de objetos coletados
   - [ ] Design
   - [ ] ?
