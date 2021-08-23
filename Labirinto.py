@@ -80,8 +80,8 @@ class Player(pygame.sprite.Sprite):
                 self.rect.top = block.rect.bottom
 
 def on_grid_random():
-    x = random.randint(30, 740)
-    y = random.randint(30, 540)
+    x = random.randint(50, 740)
+    y = random.randint(50, 540)
     return (x//15 * 15, y//15 *15)
 
 def main():
