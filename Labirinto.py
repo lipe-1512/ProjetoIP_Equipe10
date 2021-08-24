@@ -2,6 +2,7 @@ import pygame
 import random
 from Wall_Room import*
 from Player_Item import*
+import time
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 BLUE = (0, 0, 255)
@@ -80,8 +81,8 @@ class Player(pygame.sprite.Sprite):
                 self.rect.top = block.rect.bottom
 
 def on_grid_random():
-    x = random.randint(30, 740)
-    y = random.randint(30, 540)
+    x = random.randint(40, 740)
+    y = random.randint(40, 540)
     return (x//15 * 15, y//15 *15)
 
 def main():
@@ -130,7 +131,7 @@ def main():
     done = False
     count = 0
     end = False
-    
+    startTime = time.time()
     while not done:
 
         #End game if player collise a wall   
@@ -138,7 +139,9 @@ def main():
             screen.fill(WHITE)
             font = pygame.font.Font('freesansbold.ttf', TEXT_SIZE) 
             gameoverText = font.render("GAME OVER, para jogar novamente aperte C, para sair aperte Esc", True, BLACK)
-            screen.blit(gameoverText, (250,270))
+            gameoverText_rect = gameoverText.get_rect(center=(800/2, 600/2))
+            screen.blit(gameoverText, (gameoverText_rect))
+    
             pygame.display.update()
 
             for event in pygame.event.get():
@@ -159,9 +162,12 @@ def main():
         #end game if complete all levels
         while end:
             screen.fill(WHITE)
-            font = pygame.font.Font('freesansbold.ttf', TEXT_SIZE)
-            theEndText = font.render("FIM, para jogar novamente aperte C, para sair aperte Esc", True, BLACK)
-            screen.blit(theEndText, (250,270))
+            font = pygame.font.Font('freesansbold.ttf', TEXT_SIZE-2)
+            #theEndText = font.render("para jogar novamente aperte C, para sair aperte Esc", True, BLACK)
+            #screen.blit(theEndText, (250,270))
+            timerText = font.render(f"Parabéns, você conclui o desafio em: {round(endTime - startTime, 1)}s. Para jogar novamente aperte C, para sair aperte Esc", True, BLACK)
+            timerText_rect = timerText.get_rect(center=(800/2, 600/2))
+            screen.blit(timerText, (timerText_rect))
             pygame.display.update()
             
             for event in pygame.event.get():
@@ -222,10 +228,10 @@ def main():
           
            
             if count == N:
-                print(current_room_no, N)
                 if current_room_no <= N-1:
                     current_room_no += 1
                     if current_room_no == N:
+                        endTime = time.time()
                         end = True
                     else:
                         current_room = rooms[current_room_no]
@@ -246,13 +252,18 @@ def main():
         screen.fill(BLACK)
             #count
 
-        font = pygame.font.Font('freesansbold.ttf', 32)
-
-        score = font.render("Restam: " + str(N - count), True, WHITE)
-        screen.blit(score, (30,30))
+        
 
         movingsprites.draw(screen)
         current_room.wall_list.draw(screen)
+
+        font = pygame.font.Font('freesansbold.ttf', 14)
+
+        score = font.render("Restam: " + str(N - count), True, WHITE)
+        screen.blit(score, (30,5))
+
+        temp = font.render("Timer: " + str(round(time.time() - startTime, 1)), True, WHITE)
+        screen.blit(temp, (700,5))
 
         pygame.display.flip()
  
