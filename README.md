@@ -1,13 +1,16 @@
 # Labirinto
 
-É um jogo que consiste em percorrer um labirinto coletando itens para passar de fase
+É um jogo, que consiste em percorrer um labirinto coletando itens para passar de fase no menor tempo possível e sem colidir nas paredes, pois se bater o jogo acaba. Atualmente existem três fases e 2 itens diferentes. Um tipo de item é necessário para passar de fase o outro item deixa o jogador imune, podendo colidir nas paredes.
 
 ### Funcionalidades
   - [X] Movimentação do player
-  - [X] Colisão
-  - [X] Adicionar Objetos
+  - [X] Colisão do player com muro e itens coletaveis, colisão entre os itens coletaveis e o muro
+  - [X] Itens coletaveis
   - [X] Contador
-  - [X] Mudar de fase de acordo com a quantidade de objetos coletados
+  - [X] Timer
+  - [X] Telas de fim
+  - [X] Mudar de fase quando pegar todos itens especificos
+  - [X] Item que deixa o player imune
   - [ ] Design
   - [ ] ?
 
