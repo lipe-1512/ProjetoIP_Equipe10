@@ -52,10 +52,10 @@ class Room1(Room):
         # Make the walls. (x_pos, y_pos, width, height)
 
         # This is a list of walls. Each is in the form [x, y, width, height]
-        walls = [[0, 0, 20, 600, WHITE],
-                 [780, 0, 20, 600, WHITE],
-                 [20, 0, 760, 20, WHITE],
-                 [20, 580, 760, 20, WHITE],
+        walls = [[0, 0, 20, 600, BLUE],
+                 [780, 0, 20, 600, BLUE],
+                 [20, 0, 760, 20, BLUE],
+                 [20, 580, 760, 20, BLUE],
                  [390, 50, 20, 500, BLUE],
                  [330, 80, 20, 380, BLUE],
                  [130, 80, 20, 200, BLUE],
