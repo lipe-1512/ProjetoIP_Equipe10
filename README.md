@@ -19,7 +19,7 @@
 
 <table>
   <tr>
-    <td align="center"><a href="><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/69467961?v=4" width="100px;" alt=""/><br /><sub><b>Leonardo Magalhãed</b></sub></a><br /><a href="https://github.com/LeoM0108" title="Rocketseat"></a></td>
+    <td align="center"><a href=""https://github.com/LeoM0108"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/69467961?v=4" width="100px;" alt=""/><br /><sub><b>Leonardo Magalhães</b></sub></a><br /><a href="https://github.com/LeoM0108" title="Rocketseat"></a></td>
     <td align="center"><a href="https://github.com/bruno7cb"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/80714746?v=4" width="100px;" alt=""/><br /><sub><b>Guilherme Bruno</b></sub></a><br /><a href="https://rocketseat.com.br/" title="Rocketseat"></a></td>
     <td align="center"><a href="https://github.com/jovisf"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/86302694?v=4" width="100px;" alt=""/><br /><sub><b>João Victor</b></sub></a><br /><a href="https://rocketseat.com.br/" title="Rocketseat"</a></td>
     <td align="center"><a href="https://github.com/lipe-1512"><img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/47424471?v=4" width="100px;" alt=""/><br /><sub><b>Filipe Fernando</b></sub></a><br /><a href="https://rocketseat.com.br/" title="Rocketseat"</a></td>
